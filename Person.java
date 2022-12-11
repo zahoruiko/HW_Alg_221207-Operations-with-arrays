@@ -44,9 +44,4 @@ public class Person implements Comparable<Person> {
         Person person = (Person) o;
         return getAge() == person.getAge() && Objects.equals(getName(), person.getName());
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getAge(), getName());
-    }
 }
