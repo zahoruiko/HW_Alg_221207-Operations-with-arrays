@@ -13,22 +13,22 @@ public class PersonArrayOperations {
                 new Person("Alex", 30),
         };
 
-        System.out.println("------------   Сотрировка массива объектов   -------------");
-        System.out.println("Исходный массив: " + Arrays.toString(persons));
-        // Сортируем массив объектов
+        System.out.println("------------   Sorting an array of objects   -------------");
+        System.out.println("Source array: " + Arrays.toString(persons));
+        // Sorting an array of objects
         sortPersons(persons);
-        System.out.println("Отсортированный массив: " + Arrays.toString(persons));
+        System.out.println("Sorted array: " + Arrays.toString(persons));
 
 
-        System.out.println("-------------  Поиск элемента по индексу -----------------");
+        System.out.println("-------------  Searching for an item by index -----------------");
         int index = 2;
-        System.out.println("Индекс элемента = " + index);
+        System.out.println("Element index = " + index);
         Person searchedPerson = getPersonById(persons, index);
-        System.out.println("Вывод элемента по индексу = "  + searchedPerson);
+        System.out.println("Output of an element by index = "  + searchedPerson);
 
 
-        System.out.println("------   Получение индекса по значению элемента   --------");
-        // Проверяем наличие этого объекта в массиве
+        System.out.println("------   Getting an index by the value of an element   --------");
+        // We check the presence of this object in the array
         Person personToCheck = new Person("Waltraud", 60);
         Person[] persons2 = {
                 new Person("Helmut", 70),
@@ -38,52 +38,49 @@ public class PersonArrayOperations {
                 new Person("Alfred", 60),
                 new Person("Alex", 30),
         };
-        System.out.println("Массив объектов Person: " + Arrays.toString(persons2));
-        System.out.println("Искомый элемент: " + personToCheck);
+        System.out.println("Array of Person objects: " + Arrays.toString(persons2));
+        System.out.println("The desired element: " + personToCheck);
 
-        // Проверяем наличие в массиве объекта с такими же свойствами
-        System.out.println("Индекс элемента в массиве:" + getPersonIndex(persons2, personToCheck));
+        // We check the presence of an object with the same properties in the array
+        System.out.println("Index of the element in the array:" + getPersonIndex(persons2, personToCheck));
 
 
-        System.out.println("------   Удаление элемента из массива   --------");
-        System.out.println("Массив объектов Person: " + Arrays.toString(persons2));
-        System.out.println("Длина массива объектов Person: " + persons2.length);
+        System.out.println("------   Removing an element from an array   --------");
+        System.out.println("Array of Person objects: " + Arrays.toString(persons2));
+        System.out.println("Length of the array of Person objects: " + persons2.length);
         try {
             index = 3;
-            System.out.println("Удаляем объект с индексом: " + index);
+            System.out.println("Deleting an object with an index: " + index);
             persons = deleteValueFromArrayByIndex(persons2, index);
-            System.out.println("Сокращенный Массив объектов Person: " + Arrays.toString(persons));
-            System.out.println("Длина массива объектов Person: " + persons.length);
+            System.out.println("Reduced Array of Person objects: " + Arrays.toString(persons));
+            System.out.println("Length of the array of Person objects: " + persons.length);
         } catch (Exception e) {
             System.out.println(e);
         }
 
 
-        System.out.println("------   Добавление объекта в массив   --------");
+        System.out.println("------   Adding an object to an array   --------");
 
-        System.out.println("Исходный массив объектов Person: " + Arrays.toString(persons2));
-        System.out.println("Длина исходного массива объектов Person: " + persons2.length);
+        System.out.println("Source array of Person objects: " + Arrays.toString(persons2));
+        System.out.println("The length of the original array of Person objects: " + persons2.length);
         int insertPosition = 2;
-        System.out.println("Позиция вставки элемента: " + insertPosition);
+        System.out.println("Item insertion position: " + insertPosition);
         Person newValue = new Person("Max", 33);
-        System.out.println("Добавляемый элемент: " + newValue);
+        System.out.println("The element being added: " + newValue);
         persons2 = addValueToArrayInPositionByIndex(persons2, newValue, insertPosition);
-        System.out.println("Результирующий массив объектов Person: " + Arrays.toString(persons2));
-        System.out.println("Длина результирующего массива объектов Person: " + persons2.length);
+        System.out.println("The resulting array of Person objects: " + Arrays.toString(persons2));
+        System.out.println("Length of the resulting array of Person objects: " + persons2.length);
 
 
-        System.out.println("------   Увеливение емкости массива объектов   --------");
-        System.out.println("Массив объектов Person: " + Arrays.toString(persons2));
-        System.out.println("Длина исходного массива: " + persons2.length);
-        // Увеличение емкости массива посредством создани] нового массива большей емкости и копирования в него данных из исходного
+        System.out.println("------   Increasing the capacity of an array of objects   --------");
+        System.out.println("Array of Person objects: " + Arrays.toString(persons2));
+        System.out.println("Length of the source array: " + persons2.length);
+        // Increasing the capacity of the array by creating] a new array of larger capacity and copying data from the original into it
         int extArraySize = 3;
-        System.out.println("Количество добавляемых в массив ячеек: " + extArraySize);
+        System.out.println("The number of cells to be added to the array: " + extArraySize);
         Person[] newArr = increaseArrayCapacity(persons2, extArraySize);
-        System.out.println("Увеличенные массив" + Arrays.toString(newArr));
-        System.out.println("Длина увеличенного массива: " + newArr.length);
-
-
-
+        System.out.println("Enlarged array" + Arrays.toString(newArr));
+        System.out.println("Length of the enlarged array: " + newArr.length);
     }
 
     public static void sortPersons(Person[] persons) {
@@ -109,18 +106,18 @@ public class PersonArrayOperations {
         if(insertPosition <= sourceArray.length - 1) {
             newArrayLength = sourceArray.length + 1;
         } else {
-            // Если позиция больше позиции последнего элемента
+            // If the position is greater than the position of the last element
             newArrayLength = insertPosition + 1;
         }
         Person[] newArray = new Person[newArrayLength];
         if(insertPosition <= sourceArray.length - 1) {
-            // Копируем элементы до позиции вставки
+            // Copy the elements to the insertion position
             for (int i = 0; i < insertPosition; i++) {
                 newArray[i] = sourceArray[i];
             }
-            // Вставляем новый элемент в заданную позицию
+            // Inserting a new element into the specified position
             newArray[insertPosition] = newValue;
-            // Копируем в новый массив остальные элементы из исходного массива
+            // Copy the remaining elements from the original array to the new array
             for (int i = insertPosition; i < sourceArray.length; i++) {
                 newArray[i + 1] = sourceArray[i];
             }
@@ -135,16 +132,16 @@ public class PersonArrayOperations {
 
     public static Person[] deleteValueFromArrayByIndex(Person[] arr, int index) throws Exception {
         if (index > arr.length - 1) {
-            throw new Exception("Введенный индекс превышает индекс последнего элемента");
+            throw new Exception("The entered index exceeds the index of the last element");
         }
-        // Создаем новый массив меньшей емкости
+        // Creating a new array of smaller capacity
         Person[] newArray = new Person[arr.length - 1];
-        // Копируем элементы от начала массива и до удаляемого элемента
+        // Copy the elements from the beginning of the array to the element being deleted
         int i;
         for(i = 0; i < index; i++) {
             newArray[i] = arr[i];
         }
-        // Копируем элементы после удаляемого значения из исходного массива
+        // Copy the elements after the value being deleted from the source array
         for(i = index + 1; i < arr.length; i++) {
             newArray[i - 1] = arr[i];
         }
